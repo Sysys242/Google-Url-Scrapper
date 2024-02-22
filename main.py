@@ -3,10 +3,10 @@ from urllib.parse import urlparse
 
 
 
-class Google():
+class Google:
     def __init__(self) -> None:
         self.session = tls_client.Session(client_identifier='chrome_112')
-        self.keywordsList = open('./keywords.txt', 'r', encoding="utf-8").read().splitlines()
+        self.keywords_list = open('./keywords.txt', 'r', encoding="utf-8").read().splitlines()
         self.scrapped = []
     
     def scrape(self, keyword:str, page:int) -> str:
@@ -55,7 +55,7 @@ class Google():
             return False
     
     def runScrapper(self):
-        for keyword in self.keywordsList:
+        for keyword in self.keywords_list:
             for page in range(0,98):
                 scrapped = self.scrape(keyword, page) # replace for remove it to append idk bc shit split
                 open('res.txt', 'w', encoding="utf-8").write(scrapped)
